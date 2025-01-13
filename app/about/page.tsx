@@ -3,11 +3,7 @@ import Image from 'next/image'
 import React, { useEffect } from 'react'
 import image3 from "@/public/8.png"
 import gsap from 'gsap';
-const page = () => {
-
-
-
-
+const Page = () => {
 
 
     useEffect(() => {
@@ -53,4 +49,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page
