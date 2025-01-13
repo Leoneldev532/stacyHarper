@@ -26,10 +26,10 @@ export default function RootLayout({
 
         <html lang="en" className="light" >
              {/* <ReactLenis root options={lenisOptions}> */}
-            <body className={`flex justify-center h-full bg-white items-center w-full ${inter.className}`}>
-                <div className="flex w-full gap-x-4 px-8  lg:px-20 lg:py-10 py-4  h-ful justify-start lg:justify-center items-center flex-col">
+            <body className={`flex justify-center h-full  bg-white items-center w-full ${inter.className}`}>
+                <div className="flex w-full gap-x-4 px-8  max-w-[1440px] lg:px-20 lg:py-10 py-4  h-ful justify-start lg:justify-center items-center flex-col">
 
-                    <div className="flex  w-full relative  lg:flex-row flex-col min-h-[90vh]  h-full  justify-start items-start  ">
+                    <div className="flex  w-full relative   lg:flex-row flex-col min-h-[90vh]  h-full  justify-start items-start  ">
                         <div className=" w-full  lg:w-4/12 z-50 relative  lg:sticky top-0 left-0 ">
                         <Header/>
                         </div>

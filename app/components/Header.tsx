@@ -5,6 +5,7 @@ import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import SpecialLink from './SpecialLink'
 import gsap from 'gsap'
+import { usePathname, useRouter } from 'next/navigation'
 
 const Header = () => {
 
@@ -76,6 +77,9 @@ const Header = () => {
  }
 
 
+ const [pageChanged, setPageChanged] = useState<boolean>(false);
+
+
   const handleToggleHamburger = () => {
       if (isOpen) {
        
@@ -86,6 +90,10 @@ const Header = () => {
         handleOpenHamBurger()
     }
   }
+
+
+  const router = useRouter()
+  const pathname = usePathname()
 
 const handleAnimatedMenu = () =>{
   const tl = gsap.timeline({delay:1});
@@ -100,10 +108,10 @@ const handleAnimatedMenu = () =>{
 
 useEffect(() => {
     handleAnimatedMenu()
-},[]);
+},[pathname]);
+const tl = gsap.timeline({delay:3});
 
 useEffect(() => {
-const tl = gsap.timeline({delay:3});
   tl.fromTo(
       ".logoTxt",
       { x: -80, autoAlpha: 0, },
@@ -111,7 +119,7 @@ const tl = gsap.timeline({delay:3});
   );
 
   return () => { tl.kill() };
-}, []);
+}, [pathname]);
 
 
 
