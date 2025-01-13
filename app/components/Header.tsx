@@ -5,6 +5,8 @@ import Link from 'next/link'
 import React, { useEffect, useRef, useState } from 'react'
 import SpecialLink from './SpecialLink'
 import gsap from 'gsap'
+import Lenis from '@studio-freight/lenis/types'
+import { ScrollTrigger } from 'gsap/all'
 
 const Header = () => {
 
@@ -117,7 +119,7 @@ const tl = gsap.timeline({delay:3});
 
 const lenis = new Lenis()
 
-lenis.on('scroll', (e) => {
+lenis.on('scroll', (e:any) => {
   console.log(e)
 })
 

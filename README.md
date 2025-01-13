@@ -22,4 +22,4 @@ Next js -  gsap
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/Léoneldev532/Template-portfolio-1.git
+   git clone https://github.com/Leoneldev532/free-template-portfolio
