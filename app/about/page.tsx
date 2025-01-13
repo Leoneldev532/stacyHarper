@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image'
-import React, { useEffect, useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import SplitType  from "split-type"
 import image3 from "@/public/8.png"
 import gsap from 'gsap';
@@ -8,22 +8,6 @@ const page = () => {
 
 
 
-    
-    const animatedTxt = () => {
-        const textElements = document.querySelectorAll('.text-container') as NodeListOf<HTMLParagraphElement>;
-        
-        textElements.forEach((textElement:HTMLParagraphElement) => {
-            const split = new SplitType(textElement, { type: "lines" });
-            const chars = split.lines;
-
-            gsap.fromTo(
-                chars,
-                { y: '100%', opacity: 0 },
-                { y: '0%', opacity: 1, duration: 0.2, stagger: 0.05, ease: 'power4.out' }
-            );
-        });
-
-    }
 
 
 
@@ -35,7 +19,6 @@ const page = () => {
             { x: 0, autoAlpha: 1, duration: 0.5, ease: "power2.out", stagger: 0.2 }
         );
 
-        animatedTxt()
         return () => { tl.kill() };
     }, []);
 

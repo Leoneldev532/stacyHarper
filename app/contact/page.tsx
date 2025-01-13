@@ -54,7 +54,7 @@ const Page = () => {
         <section className='flex flex-col py-8 gap-y-4 txtContact justify-start items-start'>
             <h1 className="text-neutral-400 text-lg">About</h1>
 
-            <b className="text-3xl font-bold">Let's work together </b>
+            <b className="text-3xl font-bold">Let&apos;s work together </b>
 
             <p>Feel free to contact me and I can make your idea into successful business.</p>
 
