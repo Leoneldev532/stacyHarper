@@ -1,7 +1,6 @@
 "use client"
 import Image from 'next/image'
 import React, { useEffect } from 'react'
-import SplitType  from "split-type"
 import image3 from "@/public/8.png"
 import gsap from 'gsap';
 const page = () => {
