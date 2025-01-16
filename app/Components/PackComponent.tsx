@@ -10,7 +10,6 @@ const PackComponent = ({ packProps }: { packProps: packType }) => {
 
 
     const txtRef = useRef<HTMLSpanElement | null>(null)
-    gsap.defaults({delay:3})
 
     const animePrice = (finalValue:number) => {
         if(!txtRef?.current) return ;
@@ -32,6 +31,7 @@ const PackComponent = ({ packProps }: { packProps: packType }) => {
                         { y: 30 }, 
                         { 
                             y: -30, 
+                            delay: 1,
                             duration: 0.5,
                             ease: "elastic.out(1, 0.3)",
                             onComplete: () => {
