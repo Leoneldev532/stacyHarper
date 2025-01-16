@@ -27,7 +27,8 @@ export type packType = {
     title:string,
     bigImage:StaticImageData,
     listOfItems:itemsPack[],
-    finalPrice:number
+    finalPrice:number,
+    allowAnimation?:boolean
 
 }
 

@@ -52,8 +52,11 @@ const PackComponent = ({ packProps }: { packProps: packType }) => {
 
     
     useEffect(()=>{
-        animePrice(packProps?.finalPrice)
-    },[])
+        if(packProps.allowAnimation){
+            animePrice(packProps?.finalPrice)
+
+          }
+    },[packProps.allowAnimation])
     
     
 

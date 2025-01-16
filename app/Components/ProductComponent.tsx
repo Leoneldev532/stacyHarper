@@ -53,7 +53,10 @@ const ProductComponent = ({ ProductComponentProps }: { ProductComponentProps: pr
   };
 
   useEffect(() => {
-    animePrice(ProductComponentProps?.price)
+    if(ProductComponentProps.allowAnimation){
+
+      animePrice(ProductComponentProps?.price)
+    }
 
   }, [ProductComponentProps.allowAnimation])
 
