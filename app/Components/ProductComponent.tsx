@@ -6,7 +6,6 @@ import badge from "@/public/badge.png"
 import Image from 'next/image'
 import { productType } from '@/lib/type'
 import gsap from 'gsap'
-import confetti from 'canvas-confetti'
 const ProductComponent = ({ ProductComponentProps }: { ProductComponentProps: productType }) => {
 
 
