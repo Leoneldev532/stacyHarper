@@ -12,7 +12,7 @@ const ProductComponent = ({ ProductComponentProps }: { ProductComponentProps: pr
   const txtRef = useRef<HTMLSpanElement | null>(null)
 
 
-
+  gsap.defaults({delay:3})
   const animePrice = (finalValue: number) => {
 
     if (!txtRef?.current) return;
