@@ -1,37 +1,41 @@
+import { buttonStyles } from "@/app/Components/SpecialButton";
+import {VariantProps } from "class-variance-authority";
 import { StaticImageData } from "next/image";
 
-export type WorksAccordionType = {
-    title: string,
-    description: string,
-    numerotation: string;
-}
 
-export type workSaleCardType = {
-    title: string,
-    subTitle: string,
-    price: string,
-    link: string,
-    id?: number
-    image: StaticImageData,
-}
 
-export type PhotoCardType = {
-    title: string,
-    image: StaticImageData,
-    link: string,
-    height:number
-}
 
-export type specialLinkType={
-    title:string,
-    url:string,
-    onClick?:()=>void 
-}
 
-export type workCompType = {
-    date:string,
-    title:string,
+  
+
+export type buttonType  =  VariantProps<typeof buttonStyles> & {
     image:StaticImageData,
-    link:string,
-    theme:string
+    title?:string,
+    iconPosition:"left" | "right",
+    onClick?:()=>void
+
 }
+
+
+type itemsPack = {
+    icon:StaticImageData,
+    price:number
+}
+
+
+export type packType = {
+    title:string,
+    bigImage:StaticImageData,
+    listOfItems:itemsPack[],
+    finalPrice:number
+
+}
+
+export type productType = {
+    number:string,
+    image:StaticImageData,
+    price:number,
+    allowAnimation:boolean
+}
+
+
