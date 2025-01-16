@@ -56,7 +56,7 @@ export const SpecialButton = ({ title,onClick, image, ...props }: buttonType) =>
           alt={title || " "}
         />
       )}
-     {title && <span className="font-bold">{title}</span>}
+     {title && <span className="font-bold lg:block hidden">{title}</span>}
       {props.iconPosition === 'right' && image && (
         <Image
           src={image}

@@ -78,14 +78,16 @@ const ProductComponent = ({ ProductComponentProps }: { ProductComponentProps: pr
 
       <div className='flex justify-between items-center w-full '>
         <Image src={badge} className="object-cover" height={74} width={74} alt={ProductComponentProps?.number} />
-        <span className='text-3xl font-bold text-customMaroon'> {ProductComponentProps?.number} </span>
+        <span className='text-xl lg:text-3xl font-bold text-customMaroon'> {ProductComponentProps?.number} </span>
       </div>
 
       <div className='w-full flex justify-center items-center '>
-        {ProductComponentProps?.image && <Image src={ProductComponentProps?.image} height={"64"} width={"64"} className="object-cover" alt={ProductComponentProps?.number} />}
+        {ProductComponentProps?.image && <Image src={ProductComponentProps?.image} height={"64"} width={"64"} 
+        className="object-cover" alt={ProductComponentProps?.number} />}
       </div>
 
-      <button onMouseEnter={handleAnimeTxtHoverEnter} onMouseLeave={handleAnimeTxtHoverLeave} className="rounded-xl py-2  px-1 text-white w-full text-center border border-customMaroon bg-customRed font-bold text-2xl">
+      <button onMouseEnter={handleAnimeTxtHoverEnter} onMouseLeave={handleAnimeTxtHoverLeave} 
+      className="rounded-xl py-2  px-1 text-white w-full text-center border border-customMaroon bg-customRed font-bold text-lg lg:text-2xl">
         <span ref={txtRef} className='txt'>{ProductComponentProps?.price}</span>$
       </button>
 

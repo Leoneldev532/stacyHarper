@@ -66,15 +66,15 @@ const PackComponent = ({ packProps }: { packProps: packType }) => {
          
             <span className="text-customMaroon  text-center font-thin text-md packShape w-full h-8 pt-1  z-10  "> {packProps.title} </span>
 
-            {packProps?.bigImage && <Image src={packProps?.bigImage} height="156" className="object-cover" width="156" alt={packProps?.title} />}
+            {packProps?.bigImage && <Image src={packProps?.bigImage} height="156" className="object-cover size-16  lg:size-36"  width="156" alt={packProps?.title} />}
 
-            <div className="flex flex-col rounded-xl bg-customLightMaroon/20 max-w-lg px-10 py-4 gap-y-3">
+            <div className="flex flex-col rounded-xl bg-customLightMaroon/20 max-w-lg px-6  lg:px-14 py-4 gap-y-1 lg:gap-y-3">
                 {packProps.listOfItems.map((item,index:number) => (
                     <div className="flex gap-x-3 justify-start items-center" key={index + "sitms"}>
 
-                        {item?.icon && <Image src={item?.icon} height="34" width="34" alt={`${item?.price}`} />}
+                        {item?.icon && <Image src={item?.icon} height="34" width="34" className="object-contain size-8  lg:size-8" alt={`${item?.price}`} />}
 
-                        <span className="text-2xl   font-extrabold text-customMaroon "> {item?.price}  </span>
+                        <span className="text-lg lg:text-2xl   font-extrabold text-customMaroon "> {item?.price}  </span>
                     </div>
                 ))
                 }

@@ -30,6 +30,11 @@ import confetti from "canvas-confetti"
 
 const App = () => {
 
+
+  
+  const [isOpen, setIsOpen] = useState(false)
+  const tl3 = gsap.timeline()
+
   const tabPack: packType[] = [
     {
       title: "small Pack",
@@ -47,6 +52,7 @@ const App = () => {
           price: 1
         }
       ],
+      allowAnimation: isOpen,
       finalPrice: 2.99
     },
     {
@@ -66,14 +72,13 @@ const App = () => {
           price: 2
         }
       ],
+      allowAnimation: isOpen,
       finalPrice: 5.99
     }
   ]
 
 
 
-  const [isOpen, setIsOpen] = useState(false)
-  const tl3 = gsap.timeline()
 
   const productTab: productType[] = [
     {
@@ -272,7 +277,7 @@ const App = () => {
 
       </header>
 
-      <div className="flex present flex-col gap-y-4 w-full relative justify-center items-center min-h-[50vh] ">
+      <div className="flex present flex-col gap-y-4 w-full relative justify-center items-center h-auto lg:min-h-[50vh] ">
 
         <div ref={containerDustRef} className="h-36 z-0  absolute -top-[90px]  left-[27%]  w-72 flex justify-center items-center">
 
@@ -280,7 +285,7 @@ const App = () => {
         </div>
 
         <div className="flex present  flex-col gap-y-4 w-full z-10  justify-center items-center  ">
-          <h1 className="title text-7xl uppercase tracking-wider relative">Cat Game</h1>
+          <h1 className="title text-7xl md:my-0 my-8 uppercase tracking-wider relative">Cat Game</h1>
 
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#EEAC83" className="size-56 cart">
             <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
@@ -291,18 +296,19 @@ const App = () => {
         </div>
       </div>
 
-      <div className="absolute w-full scale-0  marketBlock  flex justify-center mt-8  h-full items-center ">
+      <div className="absolute w-full scale-0  marketBlock  flex justify-center lg:mt-8 mt-14 h-full items-center ">
 
         <Image src={cat} className="object-contain cat absolute -top-[70px] " height="124" width="224" alt="chat" />
 
         <Image src={hear1} className="object-contain absolute left-[10%] -top-[30px] " height="120" width="64" alt="chat" />
         <Image src={hear2} className="object-contain absolute -top-[30px] left-[83%]  " height="120" width="64" alt="chat" />
 
-        <div className="h-[75vh] w-[80%] absolute top-0 left-[10%] flex  flex-col  border-8 px-4 pb-8 mt-4 bg-customLight items-start border-customLightOrange rounded-xl">
+        <div className="h-auto lg:h-[75vh] w-[90%] lg:w-[80%] absolute top-0 left-[6%] lg:left-[10%] flex mt-4 flex-col  border-8 px-4
+         pb-8  bg-customLight items-start border-customLightOrange rounded-xl">
 
           <div className="w-full flex justify-between  px-3 items-center">
 
-            <h1 className="text-6xl text-customOrange antialiased py-2 font-bold"> Cat shop </h1>
+            <h1 className="text-3xl lg:text-6xl text-customOrange antialiased py-2 font-bold"> Cat shop </h1>
             <div className="flex gap-x-3 justify-start items-center ">
               <SpecialButton image={piece} intent={"secondary"} iconPosition="left" title={"Coins"} />
               <SpecialButton image={storm} intent={"secondary"} iconPosition="left" title={"Energy"} />
@@ -311,8 +317,8 @@ const App = () => {
 
           </div>
 
-          <div className="flex gap-x-3 w-full  justify-start h-full pb-8   items-start">
-            <div className={"flex gap-x-4 justify-center px-2 h-full items-center w-1/2"}>
+          <div className="flex gap-3 w-full  justify-start h-full pb-8  lg:flex-row flex-col  items-start">
+            <div className={"flex gap-x-4 justify-center px-2 h-full items-center  w-full lg:w-1/2"}>
               {tabPack.map((item: packType, index: number) => (
                 <PackComponent packProps={item} key={index + "pack"} />
               ))
@@ -321,7 +327,7 @@ const App = () => {
               }
 
             </div>
-            <div className="grid grid-cols-2  gap-4 w-1/2">
+            <div className="grid grid-cols-2 lg:px-0 px-2  gap-4 w-full  lg:w-1/2">
 
               {productTab.map((item: productType, index: number) => (
                 <ProductComponent ProductComponentProps={item} key={index + "product"} />
