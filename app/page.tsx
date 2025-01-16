@@ -277,7 +277,7 @@ const App = () => {
 
       </header>
 
-      <div className="flex present flex-col gap-y-4 w-full relative justify-center items-center h-auto lg:min-h-[50vh] ">
+      <div className="flex present flex-col gap-y-4 w-full relative justify-center items-center h-auto xl:min-h-[50vh] ">
 
         <div ref={containerDustRef} className="h-36 z-0  absolute -top-[90px]  left-[27%]  w-72 flex justify-center items-center">
 
@@ -303,7 +303,7 @@ const App = () => {
         <Image src={hear1} className="object-contain absolute left-[10%] -top-[30px] " height="120" width="64" alt="chat" />
         <Image src={hear2} className="object-contain absolute -top-[30px] left-[83%]  " height="120" width="64" alt="chat" />
 
-        <div className="h-auto lg:min-h-[75vh] w-[90%] lg:w-[80%] absolute top-0 left-[6%] lg:left-[10%] flex mt-4 flex-col  border-8 px-4
+        <div className="h-auto lg:h-[75vh] w-[90%] lg:w-[80%] absolute top-0 left-[6%] lg:left-[10%] flex mt-4 flex-col  border-8 px-4
          pb-8  bg-customLight items-start border-customLightOrange rounded-xl">
 
           <div className="w-full flex justify-between  px-3 items-center">
