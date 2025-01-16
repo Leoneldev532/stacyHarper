@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
     title: "Ui Game build by Leonel Yimga ",
-    description: "For help developer with creation of her portfolio ",
+    description: "Ui Game build ",
 };
 
 
