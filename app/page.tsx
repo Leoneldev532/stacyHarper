@@ -238,7 +238,7 @@ const App = () => {
       const newX = R(w);
       const newY = R(h);
 
-      (elm as unknown).Tween = gsap.to(elm, {
+      gsap.to(elm, {
         duration: R(2) + 1,
         x: newX,
         y: newY,
