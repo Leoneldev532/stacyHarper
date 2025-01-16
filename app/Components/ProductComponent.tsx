@@ -34,7 +34,7 @@ const ProductComponent = ({ ProductComponentProps }: { ProductComponentProps: pr
             y: -30,
             
             delay: 1,
-            duration: 0.5,
+            duration: 0.6,
             ease: "elastic.out(1, 0.3)",
             onComplete: () => {
               gsap.set(element, { y: 0 });
