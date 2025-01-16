@@ -12,17 +12,6 @@ const ProductComponent = ({ ProductComponentProps }: { ProductComponentProps: pr
 
 
   
-  const colors =["blue","red","yellow"]
-  
-  function celebrate() {
-    confetti({
-        particleCount: 150,
-        spread: 100,
-        origin: { y: 0.6 },
-        colors,
-        disableForReducedMotion: true
-    });
-}
 
 
   const animePrice = (finalValue: number) => {
