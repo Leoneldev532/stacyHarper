@@ -1,6 +1,6 @@
 # Free Portfolio Template
 
-Welcome to the repository for the free portfolio template! This template is designed to help you create a professional and attractive portfolio. You are free to use, modify, and distribute it according to your needs.
+Welcome to the repository for the free Ui game template! This template is designed to help you create a professional and attractive portfolio. You are free to use, modify, and distribute it according to your needs.
 
 ## Authorization for Use
 
@@ -22,4 +22,4 @@ Next js -  gsap
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/Leoneldev532/free-template-portfolio
+      https://github.com/Leoneldev532/Free-Ui-game
