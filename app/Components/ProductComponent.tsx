@@ -1,7 +1,7 @@
 
 
 "use client"
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import badge from "@/public/badge.png"
 import Image from 'next/image'
 import { productType } from '@/lib/type'
@@ -9,46 +9,46 @@ import gsap from 'gsap'
 const ProductComponent = ({ ProductComponentProps }: { ProductComponentProps: productType }) => {
 
 
+  const txtRef = useRef<HTMLSpanElement | null>(null)
 
-  
 
 
   const animePrice = (finalValue: number) => {
-    const elements = document.querySelectorAll(".txt");
-    if (!elements.length) return;
 
-    elements.forEach((element) => {
-      let currentValue = 0;
-      const duration = 4;
-      const incrementTime = (duration * 1000) / (finalValue * 100);
+    if (!txtRef?.current) return;
+
+    const element = txtRef?.current;
+
+    let currentValue = 0;
+    const duration = 4;
+    const incrementTime = (duration * 1000) / (finalValue * 100);
 
 
-      const updateValue = () => {
-        if (currentValue < finalValue) {
-          currentValue += 0.01;
-          element.textContent = currentValue.toFixed(2);
+    const updateValue = () => {
+      if (currentValue < finalValue) {
+        currentValue += 0.01;
+        element.textContent = currentValue.toFixed(2);
 
-          gsap.fromTo(element,
-            { y: 30 },
-            {
-              y: -30,
-              duration: 0.5,
-              ease: "elastic.out(1, 0.3)",
-              onComplete: () => {
-                gsap.set(element, { y: 0 });
-                updateValue();
-              }
+        gsap.fromTo(element,
+          { y: 30 },
+          {
+            y: -30,
+            duration: 0.5,
+            ease: "elastic.out(1, 0.3)",
+            onComplete: () => {
+              gsap.set(element, { y: 0 });
+              updateValue();
             }
-          );
+          }
+        );
 
-          setTimeout(updateValue, incrementTime);
-        } else {
-          element.textContent = finalValue.toFixed(2);
-        }
-      };
+        setTimeout(updateValue, incrementTime);
+      } else {
+        element.textContent = finalValue.toFixed(2);
+      }
+    };
 
-      updateValue();
-    });
+    updateValue();
   };
 
   useEffect(() => {
@@ -82,7 +82,7 @@ const ProductComponent = ({ ProductComponentProps }: { ProductComponentProps: pr
       </div>
 
       <button onMouseEnter={handleAnimeTxtHoverEnter} onMouseLeave={handleAnimeTxtHoverLeave} className="rounded-xl py-2  px-1 text-white w-full text-center border border-customMaroon bg-customRed font-bold text-2xl">
-        <span className='txt'>{ProductComponentProps?.price}</span>$
+        <span ref={txtRef} className='txt'>{ProductComponentProps?.price}</span>$
       </button>
 
 
