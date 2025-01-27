@@ -24,7 +24,7 @@ export default function RootLayout({
         <html lang="en" className="light" >
             <meta charSet="utf-8" />
             <body className={`flex justify-center h-full   bg-white items-center w-full `}>
-                <div className="flex w-full gap-x-4 max-full p-10  h-full flex-col">
+                <div className="flex w-full gap-x-4 max-full p-2 md:p-10  h-full flex-col">
 
                     <div className="w-full  flex min-h-screen  relative  flex-col justify-start items-center">
                         {children}
