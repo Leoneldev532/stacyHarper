@@ -1,9 +1,9 @@
-# Free ui game
+# Stacy Harper Animation of or Halevi
 
 
 ## Authorization for Use
 
-I, Léonel yimga , authorize the use of this free Ui game template. You may use it for your personal or professional projects, modify it as needed, and distribute it freely.
+I, Léonel yimga , authorize the use of this free Stacy Harper Animation template. You may use it for your personal or professional projects, modify it as needed, and distribute it freely.
 
 
 ## stack use
@@ -21,4 +21,4 @@ Next js -  gsap
 
 1. **Clone the Repository**:
    ```bash
-      https://github.com/Leoneldev532/Free-Ui-game
+      https://github.com/Leoneldev532/stacyHarper.git
