@@ -9,16 +9,18 @@
 }
 
 @font-face {
-    src: url("../public/Wonder Boys - Personal Use.ttf");
-    font-family: "Wonder";
+    src: url("../public/font/AttilaSansUniformBasic-Semibold.ttf");
+    font-family: "AttilaSansUniformBasic";
 }
 
 body{
-    font-family:"wonder",sans-serif !important;
+    font-family:"AttilaSansUniformBasic",sans-serif !important;
     background-size: contain;
    
-    background-image:url("../public/Bg.png");
+    background-image:url("../public/op.png");
 }
+
+
 
 .packShape{
     background-size: cover;

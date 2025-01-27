@@ -1,346 +1,138 @@
 
 "use client"
-import piece from "@/public/piece.png"
-import storm from "@/public/energy.png"
-import Union from "@/public/Union.png"
-import Inb from "@/public/B.png"
-import diamant from "@/public/Group.png"
-import groupdiamant from "@/public/Group 24.png"
-import groupCat from "@/public/Group 21.png"
 
-import im1 from "@/public/Group 13.png"
-import im2 from "@/public/Group 19.png"
 
-import hear1 from "@/public/hear1.png"
-import hear2 from "@/public/hear2.png"
-import play from "@/public/play.svg"
+import im1 from "@/public/op.png"
 
-import cat from "@/public/cat.png"
-
-import { SpecialButton } from "./Components/SpecialButton"
-import { packType, productType } from "@/lib/type"
-import caisse from "@/public/Groupo.png"
-import PackComponent from "./Components/PackComponent"
-import ProductComponent from "./Components/ProductComponent"
 import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
+import { useEffect } from "react"
 import gsap from "gsap"
-import confetti from "canvas-confetti"
+import { MotionPathPlugin } from "gsap/all"
+import Link from "next/link"
 
 
 const App = () => {
 
 
-  
-  const [isOpen, setIsOpen] = useState(false)
-  const tl3 = gsap.timeline()
 
-  const tabPack: packType[] = [
-    {
-      title: "small Pack",
-      bigImage: im1,
-      listOfItems: [
-        {
-          icon: storm,
-          price: 200
-        }, {
-          icon: piece,
-          price: 4500
-        },
-        {
-          icon: caisse,
-          price: 1
-        }
-      ],
-      allowAnimation: isOpen,
-      finalPrice: 2.99
-    },
-    {
+  useEffect(() => {
 
-      title: "Big Pack",
-      bigImage: im2,
-      listOfItems: [
-        {
-          icon: storm,
-          price: 3000
-        }, {
-          icon: piece,
-          price: 200
-        },
-        {
-          icon: caisse,
-          price: 2
-        }
-      ],
-      allowAnimation: isOpen,
-      finalPrice: 5.99
-    }
-  ]
+    const tl = gsap.timeline({ delay: 2 })
 
+    gsap.registerPlugin(MotionPathPlugin);
+    gsap.set(".t1", { y: "3rem" })
+    gsap.set(".t2", { y: "8rem" })
 
-
-
-  const productTab: productType[] = [
-    {
-      image: diamant,
-      number: "200x",
-      price: 1.99,
-      allowAnimation: isOpen
-    },
-    {
-      image: groupdiamant,
-      number: "1000x",
-      price: 4.99,
-      allowAnimation: isOpen
+    tl.fromTo(".tof", {
+      y: 600,
+      x: -100,
+      scale: 0.6,
+      transform: "rotate(-34deg)"
     }, {
-      image: groupCat,
-      number: "5000x",
-      price: 1.99,
-      allowAnimation: isOpen
-    }
-  ]
-
-
-  function celebrate() {
-    confetti({
-      particleCount: 150,
-      spread: 100,
-      origin: { y: 0.6 },
-      // colors,
-      disableForReducedMotion: true
-    });
-  }
-
-
-  const tl = gsap.timeline({ delay: 10 })
-
-  const showCat = () => {
-    tl.fromTo(".cat", {
-      y: -103,
-      duration: 200,
-      ease: "elastic"
-    }, {
-      y: 0,
-      onComplete: () => {
-        celebrate()
-      }
-    })
-  }
-
-  const rl = gsap.timeline({ delay: 1 })
-
-  const animatedProduct = () => {
-    rl.fromTo(".product", {
       y: -100,
-      opacity: 0
-    }, {
-      y: 0,
-      opacity: 1,
-      duration: 0.3,
-      ease: "power3.inOut",
-      stagger: 0.3
-    })
-  }
+      scale: 1,
+      x: 0,
+      ease: "expo.Out",
+      transform: "rotate(0deg)",
+      duration: 0.9
+    }).to(".t1",
+      {
+        y: 0,
+        stagger: 0.05,
+        ease: "power1"
 
-  const animatedPack = () => {
-    rl.fromTo(".pack", {
-      y: 100,
-      opacity: 0
-    }, {
-      y: 0,
-      opacity: 1,
-      duration: 0.3,
-      ease: "power3.inOut",
-      stagger: 0.3
-    })
-  }
+      }).to(".t1",
+        {
+          y: "-3rem",
+          stagger: 0.05,
+          ease: "power1"
 
+        }, "+=0.6").to(".bgw", {
+          scale: 0,
+          transformOrigin: "center center",
+          ease: "expo.in",
+          duration: 0.8,
+          rotate: 30
+        }).to(".im", {
+          duration: 1.3,
+          ease: "expo.out",
+          transformOrigin: "center center",
+          height: 550,
+          width: 400,
+          y: -20
+        }, "-=0.1").to(".t2", {
+          y: 0,
+          stagger: 0.05,
+          ease: "power1"
+        }, "<").to(".hheader,.hfooter", {
+          opacity: 1,
+          duration: 0.5
+        }, "<").add(()=>{tl.reverse()})
 
-  useEffect(() => {
-    animatedPack()
-    animatedProduct()
-    showCat()
-  }, [isOpen])
-
-
-  const toggleShow = () => {
-    if (isOpen) {
-
-      tl3.to(".present", {
-        scale: 1,
-        ease: "elastic.inOut",
-        duration: 0.3
-      }).to(".marketBlock", {
-        scale: 0,
-        ease: "elastic.inOut",
-        duration: 0.3
-      }).to(".marketBlock", {
-        opacity: 0,
-        ease: "elastic.inOut",
-        duration: 0.3
-      }, "-=2")
-
-      setIsOpen(false)
-    } else {
-      tl3.to(".present", {
-        scale: 0,
-        ease: "elastic.inOut",
-        duration: 0.3
-      }).to(".marketBlock", {
-        scale: 1,
-        ease: "elastic.inOut",
-        duration: 0.3
-      }).to(".marketBlock", {
-        opacity: 1,
-        ease: "elastic.inOut",
-        duration: 0.3
-      }, "-=2")
-
-      setIsOpen(true)
-    }
-  }
-
-  const showSpecialBtnAnimated = () => {
-    gsap.fromTo(".specialbtn", {
-      y: -300,
-    }, {
-      y: 0,
-      ease: "power4",
-      duration: 0.4,
-      stagger: {
-        each: 0.3
-      }
-    })
-  }
-  const containerDustRef = useRef<HTMLDivElement | null>(null)
-
-
-
-  const addDust = (containerDustRef: HTMLDivElement | null) => {
-    if (!containerDustRef) return;
-    const total = 70;
-    const w = 500; // Largeur du conteneur
-    const h = 200; // Hauteur du conteneur
-    const Tweens: HTMLDivElement[] = []
-    for (let i = total; i--;) {
-      const Div = document.createElement('div');
-      console.log(R(w), R(h))
-      gsap.set(Div, {
-        className: 'dot',
-        y: R(h),
-        opacity: 0
-      });
-      containerDustRef.appendChild(Div);
-      Anim(Div);
-      Tweens.push(Div);
-    }
-
-    function R(max: number) {
-      return Math.random() * max;
-    }
-
-    function Anim(elm: HTMLDivElement) {
-      const newX = R(w);
-      const newY = R(h);
-
-      gsap.to(elm, {
-        duration: R(2) + 1,
-        x: newX,
-        y: newY,
-        opacity: R(0.5) + 0.5,
-        scale: R(1) + 0.5,
-        delay: R(5),
-        onComplete: () => Anim(elm),
-        ease: "power1.inOut"
-      });
-    }
-  };
-
-
-  useEffect(() => {
-    showSpecialBtnAnimated()
-    addDust(containerDustRef?.current)
   }, [])
 
 
 
+
   return (
-    <section className="  relative min-h-[90vh] py-8 justify-start backdrop-blur-sm  items-center rounded-xl bg-black/20 h-full w-full   flex flex-col  ">
+    <section className=" relative min-h-[90vh] overflow-hidden  bg-black py-8 justify-center  items-center   h-full w-full   flex flex-col  ">
+      <div className="absolute flex  w-full  h-full justify-center items-center pointer-events-none top-0 left-0 z-10">
+        <div className="h-72  relative flex  w-80 flex-col justify-start items-center tof">
 
-      <header className="flex justify-between items-center w-full px-8 ">
+          <div className="w-full object-cover absolute py-3  px-1 z-10 im   h-56">
+            <Image src={im1} height={1000} width={1200} className="h-full w-full object-cover " alt="image" />
+          </div>
 
-        <div className="flex gap-x-2">
-          <SpecialButton image={piece} intent={"primary"} iconPosition="left" title={"34"} />
-          <SpecialButton image={storm} intent={"primary"} iconPosition="left" title={"4"} />
-        </div>
-        <SpecialButton onClick={() => toggleShow()} image={!isOpen ? play : Union} intent={"primaryp"} iconPosition="left" />
+          <div className="h-full bgw w-[21rem] px-1 flex   flex-col justify-end items-end bg-white z-0 absolute p-4 " >
+            <h2 className="text-4xl px-2 h-10 w-full overflow-hidden h1"> <div className="relative inline-flex">
+              <div className="t1    " >S</div>
+              <div className="t1    " >t</div>
+              <div className="t1    " >a</div>
+              <div className="t1    " >c</div>
+              <div className="t1    " >y</div>
+              <div className="t1    " >&nbsp;</div>
+              <div className="t1    " >H</div>
+              <div className="t1    " >a</div>
+              <div className="t1    " >r</div>
+              <div className="t1    " >p</div>
+              <div className="t1    " >e</div>
+              <div className="t1    " >r</div>
 
-      </header>
+            </div>
+            </h2>
+          </div>
 
-      <div className="flex present flex-col gap-y-4 w-full relative justify-center items-center h-auto xl:min-h-[50vh] ">
-
-        <div ref={containerDustRef} className="h-36 z-0  absolute -top-[90px]  left-[27%]  w-72 flex justify-center items-center">
-
-
-        </div>
-
-        <div className="flex present  flex-col gap-y-4 w-full z-10  justify-center items-center  ">
-          <h1 className="title text-7xl md:my-0 my-8 uppercase tracking-wider relative">Cat Game</h1>
-
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="#EEAC83" className="size-56 cart">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-          </svg>
-
-
-          <button onClick={() => toggleShow()} className="px-4 py-2 rounded-xl beginbtn text-4xl uppercase"> Go Market </button>
         </div>
       </div>
 
-      <div className="absolute w-full scale-0  marketBlock  flex justify-center lg:mt-8 mt-14 h-full items-center ">
-
-        <Image src={cat} className="object-contain cat absolute -top-[70px] " height="124" width="224" alt="chat" />
-
-        <Image src={hear1} className="object-contain absolute left-[10%] -top-[30px] " height="120" width="64" alt="chat" />
-        <Image src={hear2} className="object-contain absolute -top-[30px] left-[83%]  " height="120" width="64" alt="chat" />
-
-        <div className="h-auto lg:h-[75vh] w-[90%] lg:w-[80%] absolute top-0 left-[6%] lg:left-[10%] flex mt-4 flex-col  border-8 px-4
-         pb-8  bg-customLight items-start border-customLightOrange rounded-xl">
-
-          <div className="w-full flex justify-between  px-3 items-center">
-
-            <h1 className="text-3xl lg:text-6xl text-customOrange antialiased py-2 font-bold"> Cat shop </h1>
-            <div className="flex gap-x-3 justify-start items-center ">
-              <SpecialButton image={piece} intent={"secondary"} iconPosition="left" title={"Coins"} />
-              <SpecialButton image={storm} intent={"secondary"} iconPosition="left" title={"Energy"} />
-              <SpecialButton image={Inb} intent={"primary"} iconPosition="left" title={"Energy"} />
-            </div>
+      <div className="absolute z-0  p-4  flex-col  flex justify-start items-center left-0 top-0 w-full h-full">
+        <header className="flex justify-between text-white/80  items-center w-full ">
+          <h4 className="stacy harper text-lg  hheader opacity-0">  STACY HARPER  </h4>
+          <Link href="/" className=" text-lg hheader opacity-0"> <span>ARCHIVE</span> </Link>
+        </header>
+        <div className="flex h-[80vh] w-full justify-center items-center ">
+          <h2 className="text-9xl text-white px-2 h-28 font-bold  w-full  flex justify-center items-center overflow-hidden "> <div className="relative inline-flex">
+            <div className="t2    " >S</div>
+            <div className="t2    " >t</div>
+            <div className="t2    " >a</div>
+            <div className="t2    " >c</div>
+            <div className="t2    " >y</div>
+            <div className="t2    " >&nbsp;</div>
+            <div className="t2    " >H</div>
+            <div className="t2    " >a</div>
+            <div className="t2    " >r</div>
+            <div className="t2    " >p</div>
+            <div className="t2    " >e</div>
+            <div className="t2    " >r</div>
 
           </div>
-
-          <div className="flex gap-3 w-full  justify-start h-full pb-8  lg:flex-row flex-col  items-start">
-            <div className={"flex gap-x-4 justify-center px-2 h-full items-center  w-full lg:w-1/2"}>
-              {tabPack.map((item: packType, index: number) => (
-                <PackComponent packProps={item} key={index + "pack"} />
-              ))
-
-
-              }
-
-            </div>
-            <div className="grid grid-cols-2 lg:px-0 px-2  gap-4 w-full  lg:w-1/2">
-
-              {productTab.map((item: productType, index: number) => (
-                <ProductComponent ProductComponentProps={item} key={index + "product"} />
-              ))}
-
-
-
-            </div>
-          </div>
+          </h2>
         </div>
+        <footer className="flex uppercase text-white/80 w-full justify-between items-center">
+          <span className="hfooter opacity-0"> (2026) </span>
+          <h4 className="text-lg hfooter  opacity-0"> About </h4>
+        </footer>
       </div>
-
-
 
     </section>
   )
