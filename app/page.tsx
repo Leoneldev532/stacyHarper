@@ -5,7 +5,7 @@
 import im1 from "@/public/op.png"
 
 import Image from "next/image"
-import { useEffect, useLayoutEffect } from "react"
+import {  useLayoutEffect } from "react"
 import gsap from "gsap"
 import { MotionPathPlugin } from "gsap/all"
 import Link from "next/link"
